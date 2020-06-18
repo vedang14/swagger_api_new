@@ -1,0 +1,332 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Vedang_Swagger_Api",
+    "description" : "Task_2 for Kaiburr",
+    "version" : "0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080"
+  } ],
+  "paths" : {
+    "/server/byName" : {
+      "get" : {
+        "description" : "Get server object by Name",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "test_2"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "get request successfull",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "[{\"id\":\"5e7f0eb5b8e7c95ffcece8d5\",\"name\":\"test_2\",\"language\":\"Ruby\",\"framework\":\"Ruby_On_Rails\"},{\"id\":\"5e7f1075b8e7c95ffcece8d7\",\"name\":\"test_2\",\"language\":\"ruby\",\"framework\":\"ruby_on_rails\"}]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:8080"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost:8080"
+      } ]
+    },
+    "/server/byId" : {
+      "get" : {
+        "description" : "Get server object by Id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "5e7f11c0b8e7c95ffcece8d9"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "get req successfull",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "{\"id\":\"5e7f11c0b8e7c95ffcece8d9\",\"name\":\"server2\",\"language\":\"Java\",\"framework\":\"SpringBoot\"}"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "return_404 if object doesn't exists",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404"
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "{\"timestamp\":\"2020-03-28T09:03:11.402+0000\",\"status\":404,\"error\":\"Not Found\",\"message\":\"Server Object Not Found\",\"path\":\"/server/byId\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:8080"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost:8080"
+      } ]
+    },
+    "/server/" : {
+      "get" : {
+        "description" : "get list of all server objects",
+        "responses" : {
+          "200" : {
+            "description" : "get list successfull",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : { }
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "[{\"id\":\"5e7f0eb5b8e7c95ffcece8d5\",\"name\":\"test_2\",\"language\":\"Ruby\",\"framework\":\"Ruby_On_Rails\"},{\"id\":\"5e7f1075b8e7c95ffcece8d7\",\"name\":\"test_2\",\"language\":\"ruby\",\"framework\":\"ruby_on_rails\"},{\"id\":\"5e7f11acb8e7c95ffcece8d8\",\"name\":\"server1\",\"language\":\"Javascript\",\"framework\":\"Express\"},{\"id\":\"5e7f11c0b8e7c95ffcece8d9\",\"name\":\"server2\",\"language\":\"Java\",\"framework\":\"SpringBoot\"},{\"id\":\"5e7f11d3b8e7c95ffcece8da\",\"name\":\"server3\",\"language\":\"Javascript\",\"framework\":\"Node.js\"},{\"id\":\"5e7f11f0b8e7c95ffcece8db\",\"name\":\"server4\",\"language\":\"Kotlin\",\"framework\":\"Dart\"}]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:8080"
+        } ]
+      },
+      "put" : {
+        "description" : "modify server object by its id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "5e7f1075b8e7c95ffcece8d7"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"id\": \"5e7f1075b8e7c95ffcece8d7\",\r\n    \"name\": \"test_2\",\r\n    \"language\": \"ruby\",\r\n    \"framework\": \"ruby_on_rails\"\r\n}"
+                },
+                "1" : {
+                  "value" : "{\r\n\t\"id\": \"4542\",\r\n\t\"name\": \"server5\",\r\n\t\"language\":\"Python\",\r\n\t\"framework\":\"Django\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "server object modified",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/body"
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "{\"id\":\"5e7f1075b8e7c95ffcece8d7\",\"name\":\"test_2\",\"language\":\"ruby\",\"framework\":\"ruby_on_rails\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:8080"
+        } ]
+      },
+      "post" : {
+        "description" : "adding a server object",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              },
+              "examples" : {
+                "0" : {
+                  "value" : "{\r\n    \"id\": \"5e7f1075b8e7c95ffcece8d7\",\r\n    \"name\": \"test_2\",\r\n    \"language\": \"ruby\",\r\n    \"framework\": \"ruby_on_rails\"\r\n}"
+                },
+                "1" : {
+                  "value" : "{\r\n\t\"id\": \"4542\",\r\n\t\"name\": \"server5\",\r\n\t\"language\":\"Python\",\r\n\t\"framework\":\"Django\"\r\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "server object generated successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/body_1"
+                },
+                "examples" : {
+                  "0" : {
+                    "value" : "{\"id\":\"5e7f1298b8e7c95ffcece8dc\",\"name\":\"server5\",\"language\":\"Python\",\"framework\":\"Django\"}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:8080"
+        } ]
+      },
+      "delete" : {
+        "description" : "delete server object by id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "5e7f11f0b8e7c95ffcece8db"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "object deleted",
+            "content" : {
+              "text/plain;charset=UTF-8" : {
+                "schema" : {
+                  "type" : "string"
+                },
+                "examples" : { }
+              }
+            }
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:8080"
+        } ]
+      },
+      "servers" : [ {
+        "url" : "http://localhost:8080"
+      } ]
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "framework" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "language" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          }
+        }
+      },
+      "inline_response_404" : {
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "string"
+          },
+          "error" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          },
+          "timestamp" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "integer"
+          }
+        }
+      },
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "framework" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "language" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          }
+        }
+      },
+      "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "framework" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "language" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}
